@@ -42,7 +42,7 @@ myButtonList.forEach((button) => {
 
 ```
 
-Project 1
+Project 2
 
 ``` javascript
 
