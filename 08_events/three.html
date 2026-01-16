@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+  </head>
+  <body>
+    <h1>JS EVENTS</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    function interval(action) {
+      if (action === "Start") {
+        let displayTime = () => {
+          let date = new Date().toLocaleTimeString();
+          console.log(date);
+        };
+        myInterval = setInterval(displayTime, 1000);
+      } else if (action === "Stop") {
+        clearInterval(myInterval);
+      }
+    }
+    document.getElementById("start").addEventListener("click", () => {
+      interval("Start");
+    });
+    document.getElementById("stop").addEventListener("click", () => {
+      interval("Stop");
+    });
+  </script>
+</html>
