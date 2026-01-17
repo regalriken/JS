@@ -3,4 +3,6 @@ for i in range(11):
     for j in range(11):
         print(f"{i}*{j}={i*j}")
 
-print("pushing from regalRiken's account")
+print("pushing from regalRiken's account") # failed
+
+print("Try2")
