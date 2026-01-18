@@ -1,4 +1,5 @@
 # My Projects for JS
+# done 6 out of 9
 ## [Project link](https://stackblitz.com/edit/dom-project-chaiaurcode-49bjcjlb?file=index.html)
 
 #### Solution Code
