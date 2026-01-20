@@ -1,3 +1,4 @@
+//  Making and understanding inheritance
 class User {
     constructor (username){
         this.username = username
