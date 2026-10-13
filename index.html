@@ -1,0 +1,328 @@
+Here is the updated file with Material 3 Expressive shapes inspired by Stock Android (Material You / Android 14+ / Android 15 shape tokens including scalloped clover, 4-corner star, squircle, arched pill, gem/diamond, octagon, sunny burst, and blossom).
+All key visual shapes (the hero card, thought card, feature containers, list avatars, header badge, and section blocks) are given dynamic, randomized stock Android shapes with subtle continuous floating rotation.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Riken Patel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--p:#6750A4;--op:#fff;--pc:#EADDFF;--opc:#21005D;--sc:#E8DEF8;--osc:#1D192B;--tc:#FFD8E4;--otc:#31111D;--s:#FEF7FF;--c1:#F7F2FA;--c2:#F3EDF7;--c3:#ECE6F0;--c4:#E6E0E9;--os:#1D1B20;--osv:#49454F;--ol:#79747E;--olv:#CAC4D0;color-scheme:light dark}
+@media(prefers-color-scheme:dark){:root{--p:#D0BCFF;--op:#381E72;--pc:#4F378B;--opc:#EADDFF;--sc:#4A4458;--osc:#E8DEF8;--tc:#633B48;--otc:#FFD8E4;--s:#141218;--c1:#1D1B20;--c2:#211F26;--c3:#2B2930;--c4:#36343B;--os:#E6E0E9;--osv:#CAC4D0;--ol:#938F99;--olv:#49454F}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{font-family:Roboto,system-ui,sans-serif;background:var(--s);color:var(--os);font-size:1rem;line-height:1.5;padding-bottom:calc(88px + env(safe-area-inset-bottom,0px));-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+a{color:inherit}
+.ic{width:24px;height:24px;fill:currentColor;flex-shrink:0}
+:focus-visible{outline:3px solid var(--p);outline-offset:2px}
+.rp{position:relative;overflow:hidden}
+.rp::after{content:'';position:absolute;inset:0;background:currentColor;opacity:0;transition:opacity .15s;pointer-events:none}
+.rp:hover::after{opacity:.08}.rp:focus-visible::after{opacity:.1}
+.rip{position:absolute;border-radius:50%;background:currentColor;opacity:.14;transform:scale(0);animation:rip .6s ease-out forwards;pointer-events:none}
+@keyframes rip{to{transform:scale(1);opacity:0}}
+
+/* Material 3 Expressive Dynamic Continuous Rotation */
+@keyframes m3-spin-cw {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes m3-spin-ccw {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+/* Base class for dynamic expressive shape containers */
+.m3-shape-dynamic {
+  transition: clip-path 0.5s cubic-bezier(0.2, 0, 0, 1), border-radius 0.5s ease;
+  will-change: transform;
+}
+.m3-spin {
+  animation: m3-spin-cw 38s linear infinite;
+}
+.m3-spin-reverse {
+  animation: m3-spin-ccw 44s linear infinite;
+}
+.m3-spin-slow {
+  animation: m3-spin-cw 58s linear infinite;
+}
+
+/* top app bar */
+.bar{position:sticky;top:0;z-index:30;background:var(--s);padding-top:env(safe-area-inset-top,0px);transition:background .2s}
+.bar.sc{background:var(--c2)}
+.bar .in{max-width:1080px;margin:0 auto;height:64px;padding:0 16px;display:flex;align-items:center;gap:12px}
+.av{width:42px;height:42px;background:var(--pc);color:var(--opc);display:grid;place-items:center;font-weight:500;flex-shrink:0;transition:transform 0.3s ease}
+.bar .t{font-size:1.375rem;line-height:28px;flex:1}
+.tabs{display:none;gap:4px}
+.tabs a{height:40px;padding:0 16px;border-radius:20px;display:flex;align-items:center;font-size:.875rem;font-weight:500;text-decoration:none;color:var(--osv)}
+.tabs a.on{background:var(--sc);color:var(--osc)}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--c2);display:grid;grid-template-columns:repeat(5,1fr);padding:12px 4px calc(16px + env(safe-area-inset-bottom,0px))}
+.nav a{display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;font-size:.75rem;font-weight:500;color:var(--osv)}
+.nav a .pill{width:64px;height:32px;border-radius:16px;display:grid;place-items:center;transition:background .2s}
+.nav a.on{color:var(--os)}.nav a.on .pill{background:var(--sc);color:var(--osc)}
+@media(min-width:840px){.nav{display:none}.tabs{display:flex}body{padding-bottom:0}}
+
+main{max-width:1080px;margin:0 auto;padding:8px 16px 0}
+@media(min-width:840px){main{padding:8px 24px 0}}
+.top{display:grid;gap:12px}
+@media(min-width:840px){.top{grid-template-columns:1.5fr 1fr}}
+.card{border-radius:28px;padding:28px;position:relative}
+.hero{background:var(--pc);color:var(--opc)}
+.thought{background:var(--tc);color:var(--otc);display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.lab{font-size:.875rem;font-weight:500;letter-spacing:.1px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{height:32px;padding:0 12px;border-radius:8px;border:1px solid var(--olv);display:inline-flex;align-items:center;gap:8px;font-size:.875rem;font-weight:500;color:var(--osv);background:none}
+.hero .chip{border-color:color-mix(in srgb,var(--opc) 30%,transparent);color:var(--opc)}
+.chip.f{background:var(--sc);border-color:transparent;color:var(--osc)}
+.chip.t{background:var(--tc);border-color:transparent;color:var(--otc)}
+.dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+h1{font-size:clamp(2.25rem,8vw,3.5rem);line-height:1.1;font-weight:400;margin-top:20px;letter-spacing:-.5px}
+.sub{font-size:1.5rem;line-height:32px;margin-top:8px}
+.lede{margin-top:12px;max-width:52ch;opacity:.85}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.btn{height:40px;padding:0 24px;border-radius:20px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-size:.875rem;font-weight:500;letter-spacing:.1px;text-decoration:none;border:0;cursor:pointer;background:none;color:var(--p)}
+.btn.fill{background:var(--p);color:var(--op)}
+.btn.ton{background:var(--sc);color:var(--osc)}
+.btn.out{border:1px solid var(--ol)}
+.hero .btn.out{color:var(--opc);border-color:color-mix(in srgb,var(--opc) 40%,transparent)}
+blockquote{font-size:clamp(1.375rem,3vw,1.75rem);line-height:1.3}
+#ta{font-size:.875rem;opacity:.8}
+
+section{padding-top:48px}
+h2{font-size:1.75rem;line-height:36px;font-weight:400;margin-bottom:16px}
+h2 small{display:block;font-size:.875rem;line-height:20px;color:var(--osv);margin-top:2px}
+.g3{display:grid;gap:12px}
+@media(min-width:840px){.g3{grid-template-columns:repeat(3,1fr)}}
+.fc{background:var(--c2);border-radius:24px;padding:22px}
+.fc h3{font-size:1rem;font-weight:500;color:var(--p);margin-bottom:6px}
+.fc p{color:var(--osv);font-size:.9375rem}
+details{background:var(--c2);border-radius:24px;margin-bottom:8px;overflow:hidden}
+summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:16px 16px 16px 20px;font-size:1rem;font-weight:500}
+summary::-webkit-details-marker{display:none}
+summary b{flex:1;font-weight:500}
+summary .ic{transition:transform .25s;color:var(--osv)}
+details[open] summary .ic{transform:rotate(180deg)}
+.bd{padding:0 20px 20px;color:var(--osv);font-size:.9375rem}
+.bd .chips{margin:12px 0}
+.bd a{color:var(--p);font-weight:500}
+@media(max-width:480px){summary .chip{display:none}}
+.list{background:var(--c2);border-radius:32px;overflow:hidden;list-style:none}
+.list li{display:flex;gap:16px;padding:16px 20px;align-items:flex-start}
+.list li+li{border-top:1px solid var(--olv)}
+.list .av{background:var(--sc);color:var(--osc)}
+.list b{display:block;font-weight:500;line-height:24px}
+.list .m{display:block;font-size:.875rem;color:var(--p)}
+.list p{font-size:.875rem;color:var(--osv);margin-top:4px}
+.g2{display:grid;gap:12px}
+@media(min-width:840px){.g2{grid-template-columns:1fr 1fr}}
+.fc h4{font-size:.875rem;font-weight:500;color:var(--osv);margin:16px 0 8px}
+.fc ul{list-style:none;color:var(--osv);font-size:.9375rem}
+.fc li{padding:6px 0}
+.big{font-size:1.375rem;line-height:28px;color:var(--os)}
+.say{background:var(--c3);border-radius:32px;padding:28px 24px}
+.say p{color:var(--osv);max-width:48ch}
+.mail{display:inline-block;margin:12px 0 4px;font-size:clamp(1.25rem,4.4vw,2rem);font-weight:400;color:var(--p);word-break:break-all}
+footer{max-width:1080px;margin:0 auto;padding:32px 24px;color:var(--osv);font-size:.875rem;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+@media(max-height:640px){.lede{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="home" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></symbol>
+<symbol id="build" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></symbol>
+<symbol id="work" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></symbol>
+<symbol id="school" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></symbol>
+<symbol id="mail" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></symbol>
+<symbol id="more" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></symbol>
+</svg>
+
+<header class="bar" id="bar"><div class="in">
+  <div class="av m3-shape-dynamic m3-spin" data-shape-avatar>R</div><div class="t">Riken Patel</div>
+  <nav class="tabs" aria-label="Sections">
+    <a class="rp" data-s="top" href="#top">Home</a><a class="rp" data-s="built" href="#built">Projects</a><a class="rp" data-s="path" href="#path">Experience</a><a class="rp" data-s="school" href="#school">Education</a><a class="rp" data-s="hello" href="#hello">Contact</a>
+  </nav>
+</div></header>
+
+<main id="top">
+<div class="top">
+  <div class="card hero m3-shape-dynamic" data-shape-card>
+    <div class="chips"><span class="chip"><i class="dot"></i>Open to IT and networking roles</span><span class="chip">Barrie, ON</span></div>
+    <h1>Riken Patel</h1>
+    <p class="sub">I make networks and servers behave.</p>
+    <p class="lede">Systems and networking graduate from Georgian College. Before IT, I was a journalist, so I explain things in plain words.</p>
+    <div class="acts">
+      <a class="btn fill rp" href="mailto:rikenpatel2005@gmail.com">Email me</a>
+      <a class="btn out rp" href="#built">See projects</a>
+    </div>
+  </div>
+  <div class="card thought m3-shape-dynamic" data-shape-card>
+    <span class="lab">Today's thought</span>
+    <blockquote id="tq">Loading today's thought&hellip;</blockquote>
+    <p id="ta"></p>
+  </div>
+</div>
+
+<section id="now">
+  <h2>Right now</h2>
+  <div class="g3">
+    <div class="fc m3-shape-dynamic" data-shape-card><h3>Just finished</h3><p>Georgian College's Computer Systems Technician &ndash; Networking program, on the Dean's List. I also hold my CompTIA A+.</p></div>
+    <div class="fc m3-shape-dynamic" data-shape-card><h3>Working on</h3><p>PowerShell every week, Twitter and YouTube backend clones in JavaScript, and TryHackMe at a relaxed pace. I also work at Walmart.</p></div>
+    <div class="fc m3-shape-dynamic" data-shape-card><h3>Up next</h3><p>Security+, then penetration testing. I want to learn how things get broken so I can build them better.</p></div>
+  </div>
+</section>
+
+<section id="built">
+  <h2>Projects<small>Tap one to open it</small></h2>
+  <details open class="m3-shape-dynamic" data-shape-card><summary class="rp"><b>LAMP server with security monitoring</b><span class="chip f">Completed</span><svg class="ic"><use href="#more"/></svg></summary><div class="bd">A secure Linux, Apache, MySQL and PHP server to host web projects, with user management set up for web deployment.<div class="chips"><span class="chip">Linux</span><span class="chip">Apache</span><span class="chip">MySQL</span><span class="chip">PHP</span></div><a href="https://github.com/regalriken/LAMP-STACK" target="_blank" rel="noopener noreferrer">See it on GitHub</a></div></details>
+  <details class="m3-shape-dynamic" data-shape-card><summary class="rp"><b>Cloud photo frame on a Raspberry Pi 5</b><span class="chip f">Completed</span><svg class="ic"><use href="#more"/></svg></summary><div class="bd">A photo frame that pulls pictures from Google Drive through the Drive API. A Python backend builds the slideshow and HTML renders it.<div class="chips"><span class="chip">Raspberry Pi</span><span class="chip">Python</span><span class="chip">Google Drive API</span></div></div></details>
+  <details class="m3-shape-dynamic" data-shape-card><summary class="rp"><b>Ubuntu 20.04 security hardening</b><span class="chip f">Completed</span><svg class="ic"><use href="#more"/></svg></summary><div class="bd">Secured SSH and VPN access with strong authentication and encryption, added firewall rules and intrusion detection, and set up backup and disaster recovery.<div class="chips"><span class="chip">Ubuntu</span><span class="chip">SSH</span><span class="chip">VPN</span><span class="chip">IDS</span><span class="chip">Firewall</span></div></div></details>
+  <details class="m3-shape-dynamic" data-shape-card><summary class="rp"><b>Hospital management system</b><span class="chip f">Completed</span><svg class="ic"><use href="#more"/></svg></summary><div class="bd">Python and MySQL, with modules for patient records, doctors, appointments and billing. It has full CRUD and optimized queries.<div class="chips"><span class="chip">Python</span><span class="chip">MySQL</span><span class="chip">CRUD</span></div><a href="https://github.com/regalriken/Hospital-Management" target="_blank" rel="noopener noreferrer">See it on GitHub</a></div></details>
+  <details class="m3-shape-dynamic" data-shape-card><summary class="rp"><b>Twitter and YouTube backend clones</b><span class="chip t">In progress</span><svg class="ic"><use href="#more"/></svg></summary><div class="bd">Full backends in JavaScript: REST APIs, authentication, database integration and scalable server structure.<div class="chips"><span class="chip">Node.js</span><span class="chip">REST API</span><span class="chip">Auth</span></div></div></details>
+  <p style="margin-top:12px"><a class="btn ton rp" href="https://github.com/regalriken" target="_blank" rel="noopener noreferrer">More on GitHub</a></p>
+</section>
+
+<section id="path">
+  <h2>Experience<small>Newest first</small></h2>
+  <ul class="list m3-shape-dynamic" data-shape-card>
+    <li><div class="av m3-shape-dynamic m3-spin" data-shape-avatar>W</div><div><b>Sales Associate</b><span class="m">Walmart, Food and Consumables &middot; Aug 2025 &ndash; now</span><p>Front-line customer service in a high-volume store, POS, and keeping stock fresh and food-safe.</p></div></li>
+    <li><div class="av m3-shape-dynamic m3-spin-reverse" data-shape-avatar>G</div><div><b>Peer Tutor, CSTN Program</b><span class="m">Georgian College &middot; May &ndash; Aug 2026</span><p>Helped classmates with Python, MySQL, subnetting, Linux, Active Directory and virtualization.</p></div></li>
+    <li><div class="av m3-shape-dynamic m3-spin" data-shape-avatar>F</div><div><b>Service Desk Job Simulation</b><span class="m">Forage &middot; 2025</span><p>Triaged, escalated and resolved simulated tickets under SLA pressure.</p></div></li>
+    <li><div class="av m3-shape-dynamic m3-spin-reverse" data-shape-avatar>A</div><div><b>Help Desk Technician</b><span class="m">Akshar Accounting and Investments, Borsad, India &middot; 2024, 6 months</span><p>First-line support: hardware, software, connectivity, password resets and access setup.</p></div></li>
+    <li><div class="av m3-shape-dynamic m3-spin" data-shape-avatar>T</div><div><b>Technical Instructor, Python and Networks</b><span class="m">2023</span><p>Taught intermediate Python with MySQL, plus networking fundamentals.</p></div></li>
+    <li><div class="av m3-shape-dynamic m3-spin-reverse" data-shape-avatar>J</div><div><b>Journalist</b><span class="m">Before tech</span><p>Covered politics and public issues, interviewed sources and wrote to deadline.</p></div></li>
+  </ul>
+</section>
+
+<section id="school">
+  <h2>Education and certifications</h2>
+  <div class="g2">
+    <div class="fc m3-shape-dynamic" data-shape-card>
+      <p class="big">Georgian College</p>
+      <p>Computer Systems Technician &ndash; Networking, Barrie, ON</p>
+      <div class="chips" style="margin-top:12px"><span class="chip f">Graduate</span><span class="chip t">Dean's List</span></div>
+      <h4>What I studied</h4>
+      <div class="chips"><span class="chip">Windows and Linux servers</span><span class="chip">Networking</span><span class="chip">Virtualization</span><span class="chip">Python</span><span class="chip">MySQL</span><span class="chip">Shell scripting</span><span class="chip">Cloud computing</span><span class="chip">Data centres</span><span class="chip">IT project management</span></div>
+    </div>
+    <div class="fc m3-shape-dynamic" data-shape-card>
+      <h4 style="margin-top:0">Certifications</h4>
+      <ul><li>CompTIA A+</li><li>Cisco CCNA: Introduction to Networking Essentials</li><li>Cisco CCNA: Routing &amp; Switching</li></ul>
+      <h4>Also comfortable with</h4>
+      <div class="chips"><span class="chip">Active Directory</span><span class="chip">Azure basics</span><span class="chip">GitHub</span><span class="chip">Excel</span><span class="chip">Google APIs</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="hello">
+  <div class="say m3-shape-dynamic" data-shape-card>
+    <h2 style="margin-bottom:8px">Get in touch</h2>
+    <p>I'm looking for my first full-time IT or networking role, where I can work on real systems. If you're hiring, or just want to talk networking, write to me.</p>
+    <a class="mail" href="mailto:rikenpatel2005@gmail.com">rikenpatel2005@gmail.com</a>
+    <div class="acts">
+      <a class="btn fill rp" href="mailto:rikenpatel2005@gmail.com">Email me</a>
+      <a class="btn ton rp" href="https://linkedin.com/in/riken-patel007" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="btn ton rp" href="https://github.com/regalriken" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="btn ton rp" href="https://instagram.com/notriken" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a class="btn ton rp" href="https://facebook.com/notriken" target="_blank" rel="noopener noreferrer">Facebook</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><span>&copy; 2026 Riken Patel &middot; Barrie, Ontario</span><span>&ldquo;A cheerful heart is good medicine.&rdquo;</span></footer>
+
+<nav class="nav" aria-label="Sections">
+  <a class="rp" data-s="top" href="#top"><span class="pill"><svg class="ic"><use href="#home"/></svg></span>Home</a>
+  <a class="rp" data-s="built" href="#built"><span class="pill"><svg class="ic"><use href="#build"/></svg></span>Projects</a>
+  <a class="rp" data-s="path" href="#path"><span class="pill"><svg class="ic"><use href="#work"/></svg></span>Experience</a>
+  <a class="rp" data-s="school" href="#school"><span class="pill"><svg class="ic"><use href="#school"/></svg></span>Education</a>
+  <a class="rp" data-s="hello" href="#hello"><span class="pill"><svg class="ic"><use href="#mail"/></svg></span>Contact</a>
+</nav>
+
+<script>
+/* Material 3 Expressive Stock Android Shape System */
+(function(){
+  // Official Stock Android / Material 3 Expressive Shape Library
+  const M3_AVATAR_SHAPES = [
+    // 4-leaf clover / scallop
+    'polygon(50% 0%, 79% 9%, 100% 35%, 100% 70%, 79% 91%, 50% 100%, 21% 91%, 0% 70%, 0% 35%, 21% 9%)',
+    // 4-point star expressive burst
+    'polygon(50% 0%, 63% 37%, 100% 50%, 63% 63%, 50% 100%, 37% 63%, 0% 50%, 37% 37%)',
+    // 8-corner scalloped burst (Android lockscreen clock / quick settings shape)
+    'polygon(50% 0%, 65% 15%, 85% 15%, 85% 35%, 100% 50%, 85% 65%, 85% 85%, 65% 85%, 50% 100%, 35% 85%, 15% 85%, 15% 65%, 0% 50%, 15% 35%, 15% 15%, 35% 15%)',
+    // Flower blossom / petal shape
+    'polygon(50% 0%, 64% 11%, 82% 18%, 89% 36%, 100% 50%, 89% 64%, 82% 82%, 64% 89%, 50% 100%, 36% 89%, 18% 82%, 11% 64%, 0% 50%, 11% 36%, 18% 18%, 36% 11%)',
+    // Material You Diamond / Gem
+    'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)',
+    // M3 Expressive Hexagon
+    'polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%)',
+    // M3 Expressive Octagon
+    'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'
+  ];
+
+  const M3_CARD_SHAPES = [
+    // Asymmetric organic pill (M3 Expressive Large Corner)
+    { borderRadius: '44px 16px 44px 16px' },
+    // Cut corner + rounded contrast
+    { borderRadius: '16px 48px 16px 48px' },
+    // Scalloped arch pill
+    { borderRadius: '48px 48px 18px 18px' },
+    // Soft organic squircle
+    { borderRadius: '36px 36px 36px 36px' },
+    // Wave diagonal asymmetric
+    { borderRadius: '56px 20px 40px 18px' },
+    // Bubble pill
+    { borderRadius: '24px 52px 24px 52px' },
+    // Expressive teardrop
+    { borderRadius: '48px 48px 48px 16px' },
+    // Reverse expressive teardrop
+    { borderRadius: '16px 48px 48px 48px' }
+  ];
+
+  const spinSpeeds = ['30s', '38s', '45s', '52s', '60s'];
+
+  // Apply random stock shapes and rotation dynamics to avatars
+  document.querySelectorAll('[data-shape-avatar]').forEach((el) => {
+    const randomClip = M3_AVATAR_SHAPES[Math.floor(Math.random() * M3_AVATAR_SHAPES.length)];
+    const randomDuration = spinSpeeds[Math.floor(Math.random() * spinSpeeds.length)];
+    const direction = Math.random() > 0.5 ? 'm3-spin' : 'm3-spin-reverse';
+
+    el.style.clipPath = randomClip;
+    el.style.animationDuration = randomDuration;
+    el.classList.add(direction);
+  });
+
+  // Apply random expressive Material 3 card shapes
+  document.querySelectorAll('[data-shape-card]').forEach((el) => {
+    const randomShape = M3_CARD_SHAPES[Math.floor(Math.random() * M3_CARD_SHAPES.length)];
+    Object.assign(el.style, randomShape);
+  });
+})();
+
+(function(){
+  document.addEventListener('pointerdown',function(e){var t=e.target.closest('.rp');if(!t)return;var r=t.getBoundingClientRect(),n=Math.max(r.width,r.height)*2,d=document.createElement('span');d.className='rip';d.style.cssText='width:'+n+'px;height:'+n+'px;left:'+(e.clientX-r.left-n/2)+'px;top:'+(e.clientY-r.top-n/2)+'px';t.appendChild(d);setTimeout(function(){d.remove()},600)});
+  var ids=['top','built','path','school','hello'],bar=document.getElementById('bar');
+  function spy(){var y=scrollY+140,cur='top';ids.forEach(function(i){var e=document.getElementById(i);if(e&&e.offsetTop<=y)cur=i});
+    if(innerHeight+scrollY>=document.body.scrollHeight-4)cur='hello';
+    document.querySelectorAll('[data-s]').forEach(function(a){a.classList.toggle('on',a.dataset.s===cur)});bar.classList.toggle('sc',scrollY>8)}
+  addEventListener('scroll',spy,{passive:true});spy();
+})();
+(function(){
+  var F=[["A cheerful heart is good medicine.","Proverbs 17:22"],["Talk is cheap. Show me the code.","Linus Torvalds"],["Security is a process, not a product.","Bruce Schneier"],["The best way to predict the future is to invent it.","Alan Kay"],["The only way to do great work is to love what you do.","Steve Jobs"],["Stay hungry, stay foolish.","Steve Jobs"],["Trust in the Lord with all your heart.","Proverbs 3:5"],["A gentle answer turns away wrath.","Proverbs 15:1"],["Be still, and know that I am God.","Psalm 46:10"],["Be strong and courageous.","Joshua 1:9"],["Rejoice always.","1 Thessalonians 5:16"],["Let all that you do be done in love.","1 Corinthians 16:14"],["With God all things are possible.","Matthew 19:26"],["A journey of a thousand miles begins with a single step.","Lao Tzu"],["The unexamined life is not worth living.","Socrates"],["We are what we repeatedly do. Excellence, then, is not an act, but a habit.","Will Durant"],["Premature optimization is the root of all evil.","Donald Knuth"],["Simplicity is prerequisite for reliability.","Edsger Dijkstra"],["Programs must be written for people to read, and only incidentally for machines to execute.","Harold Abelson"],["Make it work, make it right, make it fast.","Kent Beck"],["Any sufficiently advanced technology is indistinguishable from magic.","Arthur C. Clarke"],["Knowledge is power.","Francis Bacon"],["Fall seven times, stand up eight.","Japanese proverb"],["Genius is one percent inspiration and ninety-nine percent perspiration.","Thomas Edison"],["Debugging is twice as hard as writing the code in the first place.","Brian Kernighan"],["There are only two hard things in computer science: cache invalidation and naming things.","Phil Karlton"],["Given enough eyeballs, all bugs are shallow.","Eric S. Raymond"],["The network is the computer.","John Gage"],["Plans are worthless, but planning is everything.","Dwight D. Eisenhower"],["An investment in knowledge pays the best interest.","Benjamin Franklin"],["Energy and persistence conquer all things.","Benjamin Franklin"],["Well done is better than well said.","Benjamin Franklin"],["Chance favors the prepared mind.","Louis Pasteur"],["Do the best you can until you know better. Then when you know better, do better.","Maya Angelou"],["Love your neighbor as yourself.","Mark 12:31"],["The Lord is my shepherd; I shall not want.","Psalm 23:1"],["Well begun is half done.","Proverb"],["Practice makes perfect.","Proverb"]];
+  var day=Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/864e5),q=document.getElementById('tq'),a=document.getElementById('ta');
+  function show(t,w){q.textContent='\u201C'+t+'\u201D';a.textContent=w?'\u2014 '+w:''}
+  function fb(){var f=F[day%F.length];show(f[0],f[1])}
+  try{var c=JSON.parse(localStorage.getItem('thought'));if(c&&c.d===day){show(c.t,c.w);return}}catch(e){}
+  function g(u){var c=new AbortController(),t=setTimeout(function(){c.abort()},5000);return fetch(u,{signal:c.signal}).then(function(r){clearTimeout(t);if(!r.ok)throw 0;return r.json()})}
+  var B='https://dummyjson.com/quotes?limit=1';
+  g(B).then(function(t){if(!t.total)throw 0;return g(B+'&skip='+((day*7919)%t.total))}).then(function(j){
+    var o=j.quotes&&j.quotes[0];if(!o)throw 0;show(o.quote,o.author);
+    try{localStorage.setItem('thought',JSON.stringify({d:day,t:o.quote,w:o.author}))}catch(e){}
+  }).catch(fb);
+})();
+</script>
+</body>
+</html>
+
